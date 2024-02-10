@@ -12,11 +12,14 @@
       crossorigin="anonymous"
     />
   </head>
-  <body>
-    <h1>Hello, world!</h1>
+  <body class="p-3">
+    <h1>JANATA WIFI - AI ENGINEER TASK</h1>
 
-    <img src="data:image/png;base64,{{ graphic }}" alt="Chart">
+
+    <h3 class="my-3 mx-auto">Plot the data</h3>
+    <img src="data:image/png;base64,{{ graphic }}" class="w-75" alt="Chart">
     <!-- table -->
+    <h3 class="my-3 mx-auto">Data Table</h3>
     <div>
       <table class="table">
         <thead>
@@ -31,7 +34,7 @@
           </tr>
         </thead>
         <tbody>
-          {% for stock in d|slice:":10" %}
+          {% for stock in d %}
           <tr>
             <th scope="row">{{ stock.date }}</th>
             <td>{{ stock.trade_code }}</td>

@@ -70,9 +70,9 @@ def load_data_from_csv2():
 
 def home(request):
     load_data_from_csv2()
-    data = StockModel.objects.all()
+    data = StockModel.objects.all()[:100]
     # chart
-    data2 = StockModel.objects.values('date', 'close', 'volume' ).order_by('date')
+    data2 = StockModel.objects.values('date', 'close', 'volume' ).order_by('date')[:10]
     # Extract dates and close prices from queryset
     dates = [entry['date'] for entry in data2]
     close_prices = [entry['close'] for entry in data2]
@@ -105,7 +105,7 @@ def home(request):
     return render(request, 'home.html', {'d': data, 'graphic': graphic})
 
 def line_chart(request):
-    data = StockModel.objects.values('date', 'close').order_by('date')
+    data = StockModel.objects.values('date', 'close').order_by('date')[:10]
     plt.plot(data['date'], data['close'])
     plt.xlabel('Date')
     plt.ylabel('Close')
