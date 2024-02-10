@@ -1,0 +1,1 @@
+web: gunicorn jantaWifiTest.wsgi --log-file --
